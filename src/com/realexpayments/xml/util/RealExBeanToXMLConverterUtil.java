@@ -2,11 +2,13 @@ package com.realexpayments.xml.util;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.util.List;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 
+import com.google.common.base.Strings;
 import com.realexpayments.xml.bean.RealExBean;
 import com.realexpayments.xml.bean.annotations.TagAttribute;
 import com.realexpayments.xml.bean.annotations.TagName;
@@ -34,17 +36,31 @@ public class RealExBeanToXMLConverterUtil {
 			if(f.isAnnotationPresent(TagAttribute.class))
 			{
 			
-				ele.addAttribute(getFieldAnnotationValue(f, TagAttribute.class, "name"), f.get(obj).toString());
+				ele.addAttribute(getFieldAnnotationValue(f, TagAttribute.class, "name"), Strings.nullToEmpty((String)f.get(obj)).toString());
 			}
 			else if(f.get(obj)instanceof RealExBean)
 			{
-			
-				ele.add(getElementFromBean(f.get(obj)));
+				if(f.get(obj)!=null)
+					ele.add(getElementFromBean(f.get(obj)));
+			}
+			else if(f.get(obj)instanceof List && f.isAnnotationPresent(TagName.class))
+			{
+				for(Object ob:(List)f.get(obj))
+				{
+					if(ob!=null)
+						ele.add(getElementFromBean(ob));
+				}
+				
 			}
 			else if(f.isAnnotationPresent(TagName.class) && !f.get(obj).getClass().isAssignableFrom(RealExBean.class))
 			{
 				
-				ele.add(DocumentHelper.createElement(getFieldAnnotationValue(f, TagName.class, "name")).addText(f.get(obj).toString()));
+				ele.add(DocumentHelper.createElement(getFieldAnnotationValue(f, TagName.class, "name")).addText(Strings.nullToEmpty((String)f.get(obj)).toString()));
+			}
+			else if(!f.isAnnotationPresent(TagName.class)&& !f.isAnnotationPresent(TagAttribute.class) && !f.get(obj).getClass().isAssignableFrom(RealExBean.class))
+			{
+				
+				ele.addText(Strings.nullToEmpty((String)f.get(obj)).toString());
 			}
 		}
 		return ele;

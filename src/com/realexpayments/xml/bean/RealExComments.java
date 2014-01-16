@@ -7,7 +7,7 @@ import com.realexpayments.xml.bean.annotations.TagName;
 
 @TagName(name="comments")
 public class RealExComments extends RealExBean{
-	
+	@TagName(name="comment")
 	protected List<RealExComment> comments;
 
 	/**
