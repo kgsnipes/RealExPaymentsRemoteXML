@@ -17,6 +17,7 @@ import com.google.common.hash.HashCode;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
 import com.realexpayments.xml.bean.RealExBean;
+import com.realexpayments.xml.bean.RealExResponse;
 import com.realexpayments.xml.bean.annotations.TagAttribute;
 import com.realexpayments.xml.bean.annotations.TagName;
 
@@ -122,7 +123,7 @@ public class RealExBeanToXMLConverterUtil {
         return value;
     }
 	
-	public static String getSHAHashForNewPayer(String timestamp,String merchantId,String orderId,String amount,String currencyPref,String payeeRef)
+	public static String getSHAHashForNewPayer(String sharedSecret,String timestamp,String merchantId,String orderId,String amount,String currencyPref,String payeeRef)
 	{
 		String retVal="";
 		HashFunction hf = Hashing.sha1();
@@ -139,40 +140,27 @@ public class RealExBeanToXMLConverterUtil {
 		       .putString(".", Charsets.UTF_8)
 		       .putString(payeeRef, Charsets.UTF_8)
 		       .hash();
-		retVal=hc.toString();
+		HashCode hc2 = hf.newHasher()
+			       .putString(hc.toString(), Charsets.UTF_8)
+			       .putString(".", Charsets.UTF_8)
+			       .putString(sharedSecret, Charsets.UTF_8)
+			       .hash();
+		retVal=hc2.toString();
 		
 		return retVal;
 	}
 	
-	public static String toBean(RealExBean bean) throws Exception
+	public static RealExResponse toResponseBean(String xml) throws Exception
 	{
-		String retVal=null;
-		Document document = DocumentHelper.createDocument();
-		//Element root = document.addElement( getClassAnnotationValue(bean.getClass(), TagName.class, "name") );
-		document.add(getElementFromBean(bean));
-		retVal=document.asXML();
+		RealExResponse retVal=null;
+		 Document document = DocumentHelper.parseText(xml);
+		// Node response=document.selectSingleNode( "/response" );
+		// System.out.println(document.getRootElement().getPath());
+		 System.out.println(document.selectNodes( "//merchantid" ));
+		
 		return retVal;
 	}
 	
-	public Document parse(String xml) throws DocumentException {
-	        Document document = DocumentHelper.parseText(xml);
-	        return document;
-	    }
 	
-	public void treeWalk(Document document) {
-        treeWalk( document.getRootElement() );
-    }
-
-    public void treeWalk(Element element) {
-        for ( int i = 0, size = element.nodeCount(); i < size; i++ ) {
-            Node node = element.node(i);
-            if ( node instanceof Element ) {
-                treeWalk( (Element) node );
-            }
-            else {
-                // do something....
-            }
-        }
-    }
 
 }
