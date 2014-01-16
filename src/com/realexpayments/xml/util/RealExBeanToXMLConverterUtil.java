@@ -5,8 +5,11 @@ import java.lang.reflect.Field;
 import java.util.List;
 
 import org.dom4j.Document;
+import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.dom4j.Node;
+import org.dom4j.io.SAXReader;
 
 import com.google.common.base.Charsets;
 import com.google.common.base.Strings;
@@ -140,5 +143,36 @@ public class RealExBeanToXMLConverterUtil {
 		
 		return retVal;
 	}
+	
+	public static String toBean(RealExBean bean) throws Exception
+	{
+		String retVal=null;
+		Document document = DocumentHelper.createDocument();
+		//Element root = document.addElement( getClassAnnotationValue(bean.getClass(), TagName.class, "name") );
+		document.add(getElementFromBean(bean));
+		retVal=document.asXML();
+		return retVal;
+	}
+	
+	public Document parse(String xml) throws DocumentException {
+	        Document document = DocumentHelper.parseText(xml);
+	        return document;
+	    }
+	
+	public void treeWalk(Document document) {
+        treeWalk( document.getRootElement() );
+    }
+
+    public void treeWalk(Element element) {
+        for ( int i = 0, size = element.nodeCount(); i < size; i++ ) {
+            Node node = element.node(i);
+            if ( node instanceof Element ) {
+                treeWalk( (Element) node );
+            }
+            else {
+                // do something....
+            }
+        }
+    }
 
 }
