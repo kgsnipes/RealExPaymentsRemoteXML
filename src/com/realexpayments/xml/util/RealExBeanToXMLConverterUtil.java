@@ -8,7 +8,11 @@ import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 
+import com.google.common.base.Charsets;
 import com.google.common.base.Strings;
+import com.google.common.hash.HashCode;
+import com.google.common.hash.HashFunction;
+import com.google.common.hash.Hashing;
 import com.realexpayments.xml.bean.RealExBean;
 import com.realexpayments.xml.bean.annotations.TagAttribute;
 import com.realexpayments.xml.bean.annotations.TagName;
@@ -114,5 +118,27 @@ public class RealExBeanToXMLConverterUtil {
  
         return value;
     }
+	
+	public static String getSHAHashForNewPayer(String timestamp,String merchantId,String orderId,String amount,String currencyPref,String payeeRef)
+	{
+		String retVal="";
+		HashFunction hf = Hashing.sha1();
+		HashCode hc = hf.newHasher()
+		       .putString(timestamp, Charsets.UTF_8)
+		       .putString(".", Charsets.UTF_8)
+		       .putString(merchantId, Charsets.UTF_8)
+		       .putString(".", Charsets.UTF_8)
+		       .putString(orderId, Charsets.UTF_8)
+		       .putString(".", Charsets.UTF_8)
+		       .putString(amount, Charsets.UTF_8)
+		       .putString(".", Charsets.UTF_8)
+		       .putString(currencyPref, Charsets.UTF_8)
+		       .putString(".", Charsets.UTF_8)
+		       .putString(payeeRef, Charsets.UTF_8)
+		       .hash();
+		retVal=hc.toString();
+		
+		return retVal;
+	}
 
 }
