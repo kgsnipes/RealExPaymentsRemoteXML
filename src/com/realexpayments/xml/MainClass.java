@@ -13,6 +13,7 @@ import com.realexpayments.xml.bean.RealExPayer;
 import com.realexpayments.xml.bean.RealExPayerAddress;
 import com.realexpayments.xml.bean.RealExPayerPhoneNumbers;
 import com.realexpayments.xml.bean.RealExSetupNewPayerRequest;
+import com.realexpayments.xml.util.HashingUtil;
 import com.realexpayments.xml.util.RealExBeanToXMLConverterUtil;
 
 public class MainClass {
@@ -30,8 +31,8 @@ public class MainClass {
 		RealExSetupNewPayerRequest request=new RealExSetupNewPayerRequest("payer-new", "20030516175919", "yourmerchantid", "uniqueid", "7daf026b193eb18344f5ab6822cd05959718c567", payer, comments);
 		String xml=RealExBeanToXMLConverterUtil.toXML(request);
 		System.out.println(Files.toString(new File("D:\\Users\\kaushik.ganguly\\Documents\\sample_response.txt"), Charsets.UTF_8));
-		System.out.println(RealExBeanToXMLConverterUtil.getSHAHashForNewPayer("sharedSecret","432354325", "fdg", "54654", "12.00", "USD", "smith"));
-	    System.out.println(RealExBeanToXMLConverterUtil.toResponseBean(Files.toString(new File("D:\\Users\\kaushik.ganguly\\Documents\\sample_response.txt"), Charsets.UTF_8)));
+		System.out.println(HashingUtil.getSHAHashForNewPayer("sharedSecret","432354325", "fdg", "54654", "12.00", "USD", "smith"));
+	    System.out.println(RealExBeanToXMLConverterUtil.toResponseBean(Files.toString(new File("D:\\Users\\kaushik.ganguly\\Documents\\sample_response.txt"), Charsets.UTF_8)).getAuthcode());
 		System.out.println(xml);
 	}
 }
