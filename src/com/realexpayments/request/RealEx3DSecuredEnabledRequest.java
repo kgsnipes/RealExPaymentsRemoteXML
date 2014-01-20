@@ -188,13 +188,13 @@ public class RealEx3DSecuredEnabledRequest extends RealExRequest{
 		this.comments = comments;
 	}
 
-	public RealEx3DSecuredEnabledRequest(String type, String timestamp,
+	public RealEx3DSecuredEnabledRequest( String timestamp,
 			String merchantId, String account, String orderId,
 			RealExAmount amount, String payerref, String paymentmethod,
 			RealExAutoSettle autosettle, String sha1hash,
 			RealExComments comments) {
 		super();
-		this.type = type;
+		
 		this.timestamp = timestamp;
 		this.merchantId = merchantId;
 		this.account = account;

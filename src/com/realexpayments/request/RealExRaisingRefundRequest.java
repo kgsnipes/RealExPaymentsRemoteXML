@@ -285,7 +285,7 @@ public class RealExRaisingRefundRequest extends RealExRequest{
 		this.supplementaryData = supplementaryData;
 	}
 
-	public RealExRaisingRefundRequest(String type, String timestamp,
+	public RealExRaisingRefundRequest( String timestamp,
 			String merchantId, String account, String orderId,
 			RealExPaymentData paymentData, RealExMPI mpi,
 			RealExDCCInfo dccInfo, RealExAmount amount, String payerRef,
@@ -293,7 +293,7 @@ public class RealExRaisingRefundRequest extends RealExRequest{
 			String refundhash, String sha1hash, RealExComments comments,
 			RealExTSSInfo tssinfo, RealExSupplementaryData supplementaryData) {
 		super();
-		this.type = type;
+		
 		this.timestamp = timestamp;
 		this.merchantId = merchantId;
 		this.account = account;

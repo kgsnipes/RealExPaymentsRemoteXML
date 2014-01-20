@@ -146,19 +146,6 @@ public class RealExDCCSecuredEnabledRequest extends RealExRequest{
 		this.paymentmethod = paymentmethod;
 	}
 
-	/**
-	 * @return the autosettle
-	 */
-	public RealExAutoSettle getAutosettle() {
-		return autosettle;
-	}
-
-	/**
-	 * @param autosettle the autosettle to set
-	 */
-	public void setAutosettle(RealExAutoSettle autosettle) {
-		this.autosettle = autosettle;
-	}
 
 	/**
 	 * @return the sha1hash
@@ -188,13 +175,12 @@ public class RealExDCCSecuredEnabledRequest extends RealExRequest{
 		this.comments = comments;
 	}
 
-	public RealExDCCSecuredEnabledRequest(String type, String timestamp,
+	public RealExDCCSecuredEnabledRequest( String timestamp,
 			String merchantId, String account, String orderId,
-			RealExAmount amount, String payerref, String paymentmethod,
-			RealExAutoSettle autosettle, String sha1hash,
+			RealExAmount amount, String payerref, String paymentmethod, String sha1hash,
 			RealExComments comments) {
 		super();
-		this.type = type;
+	
 		this.timestamp = timestamp;
 		this.merchantId = merchantId;
 		this.account = account;
@@ -202,7 +188,7 @@ public class RealExDCCSecuredEnabledRequest extends RealExRequest{
 		this.amount = amount;
 		this.payerref = payerref;
 		this.paymentmethod = paymentmethod;
-		this.autosettle = autosettle;
+		
 		this.sha1hash = sha1hash;
 		this.comments = comments;
 	}

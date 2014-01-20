@@ -78,10 +78,10 @@ public class RealExUpdateCardRequest extends RealExRequest{
 	public void setSha1hash(String sha1hash) {
 		this.sha1hash = sha1hash;
 	}
-	public RealExUpdateCardRequest(String type, String timestamp,
+	public RealExUpdateCardRequest( String timestamp,
 			String merchantId, String orderId, RealExCard card, String sha1hash) {
 		super();
-		this.type = type;
+		
 		this.timestamp = timestamp;
 		this.merchantId = merchantId;
 		

@@ -107,11 +107,11 @@ public class RealExEditExistingPayerRequest extends RealExRequest{
 	public void setComments(RealExComments comments) {
 		this.comments = comments;
 	}
-	public RealExEditExistingPayerRequest(String type, String timestamp,
+	public RealExEditExistingPayerRequest( String timestamp,
 			String merchantId, String orderId, String sha1hash,
 			RealExPayer payer, RealExComments comments) {
 		super();
-		this.type = type;
+		
 		this.timestamp = timestamp;
 		this.merchantId = merchantId;
 		this.orderId = orderId;

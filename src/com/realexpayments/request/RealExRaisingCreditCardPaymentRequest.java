@@ -270,7 +270,7 @@ public class RealExRaisingCreditCardPaymentRequest extends RealExRequest{
 		this.supplementaryData = supplementaryData;
 	}
 
-	public RealExRaisingCreditCardPaymentRequest(String type, String timestamp,
+	public RealExRaisingCreditCardPaymentRequest(String timestamp,
 			String merchantId, String account, String orderId,
 			RealExPaymentData paymentData, RealExMPI mpi,
 			RealExDCCInfo dccInfo, RealExAmount amount, String payerRef,
@@ -278,7 +278,7 @@ public class RealExRaisingCreditCardPaymentRequest extends RealExRequest{
 			RealExComments comments, RealExTSSInfo tssinfo,
 			RealExSupplementaryData supplementaryData) {
 		super();
-		this.type = type;
+		
 		this.timestamp = timestamp;
 		this.merchantId = merchantId;
 		this.account = account;
