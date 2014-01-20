@@ -141,5 +141,33 @@ public class HashingUtil {
 		
 		return retVal;
 	}
+	
+	
+	public static String getSHAHashForCardExpiry(String sharedSecret,String timestamp,String merchantId,String orderid,String amount,String currency,String payerref)
+	{
+		String retVal="";
+		HashFunction hf = Hashing.sha1();
+		HashCode hc = hf.newHasher()
+		       .putString(timestamp, Charsets.UTF_8)
+		       .putString(".", Charsets.UTF_8)
+		       .putString(merchantId, Charsets.UTF_8)
+		       .putString(".", Charsets.UTF_8)
+		       .putString(orderid, Charsets.UTF_8)
+		       .putString(".", Charsets.UTF_8)
+		       .putString(amount, Charsets.UTF_8)
+		       .putString(".", Charsets.UTF_8)
+		       .putString(currency, Charsets.UTF_8)
+		       .putString(".", Charsets.UTF_8)
+		       .putString(payerref, Charsets.UTF_8)
+		       .hash();
+		HashCode hc2 = hf.newHasher()
+			       .putString(hc.toString(), Charsets.UTF_8)
+			       .putString(".", Charsets.UTF_8)
+			       .putString(sharedSecret, Charsets.UTF_8)
+			       .hash();
+		retVal=hc2.toString();
+		
+		return retVal;
+	}
 
 }

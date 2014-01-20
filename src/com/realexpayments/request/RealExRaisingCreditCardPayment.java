@@ -1,7 +1,15 @@
 package com.realexpayments.request;
 
+import com.realexpayments.xml.bean.RealExAmount;
+import com.realexpayments.xml.bean.RealExAutoSettle;
 import com.realexpayments.xml.bean.RealExBean;
 import com.realexpayments.xml.bean.RealExCard;
+import com.realexpayments.xml.bean.RealExComments;
+import com.realexpayments.xml.bean.RealExDCCInfo;
+import com.realexpayments.xml.bean.RealExMPI;
+import com.realexpayments.xml.bean.RealExPaymentData;
+import com.realexpayments.xml.bean.RealExSupplementaryData;
+import com.realexpayments.xml.bean.RealExTSSInfo;
 import com.realexpayments.xml.bean.annotations.TagAttribute;
 import com.realexpayments.xml.bean.annotations.TagName;
 
@@ -18,93 +26,28 @@ public class RealExRaisingCreditCardPayment extends RealExBean{
 	@TagName(name="orderid")
 	protected String orderId;
 	
-	protected RealExCard card;
+	protected RealExPaymentData paymentData;
+	protected RealExMPI mpi;
+	protected RealExDCCInfo dccInfo;
+	protected RealExAmount amount;
+	@TagName(name="payerref")
+	protected String payerRef;
+	@TagName(name="paymentmethod")
+	protected String paymentmethod;
+	protected RealExAutoSettle autoSettle;
+	
+	
 	@TagName(name="sha1hash")
 	protected String sha1hash;
-	/**
-	 * @return the type
-	 */
-	public String getType() {
-		return type;
-	}
-	/**
-	 * @param type the type to set
-	 */
-	public void setType(String type) {
-		this.type = type;
-	}
-	/**
-	 * @return the timestamp
-	 */
-	public String getTimestamp() {
-		return timestamp;
-	}
-	/**
-	 * @param timestamp the timestamp to set
-	 */
-	public void setTimestamp(String timestamp) {
-		this.timestamp = timestamp;
-	}
-	/**
-	 * @return the merchantId
-	 */
-	public String getMerchantId() {
-		return merchantId;
-	}
-	/**
-	 * @param merchantId the merchantId to set
-	 */
-	public void setMerchantId(String merchantId) {
-		this.merchantId = merchantId;
-	}
-	/**
-	 * @return the orderId
-	 */
-	public String getOrderId() {
-		return orderId;
-	}
-	/**
-	 * @param orderId the orderId to set
-	 */
-	public void setOrderId(String orderId) {
-		this.orderId = orderId;
-	}
-	/**
-	 * @return the card
-	 */
-	public RealExCard getCard() {
-		return card;
-	}
-	/**
-	 * @param card the card to set
-	 */
-	public void setCard(RealExCard card) {
-		this.card = card;
-	}
-	/**
-	 * @return the sha1hash
-	 */
-	public String getSha1hash() {
-		return sha1hash;
-	}
-	/**
-	 * @param sha1hash the sha1hash to set
-	 */
-	public void setSha1hash(String sha1hash) {
-		this.sha1hash = sha1hash;
-	}
-	public RealExRaisingCreditCardPayment(String type, String timestamp,
-			String merchantId, String orderId, RealExCard card, String sha1hash) {
-		super();
-		this.type = type;
-		this.timestamp = timestamp;
-		this.merchantId = merchantId;
-		this.orderId = orderId;
-		this.card = card;
-		this.sha1hash = sha1hash;
-	}
+	
+	protected RealExComments comments;
+	
+	protected RealExTSSInfo tssinfo;
+	
+	protected RealExSupplementaryData supplementaryData;
 	
 	
+
 	
 	
 	

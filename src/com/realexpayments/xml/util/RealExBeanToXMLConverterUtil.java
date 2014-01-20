@@ -2,7 +2,9 @@ package com.realexpayments.xml.util;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -18,6 +20,7 @@ import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
 import com.realexpayments.response.RealExResponse;
 import com.realexpayments.xml.bean.RealExBean;
+import com.realexpayments.xml.bean.RealExSupplementaryDataItem;
 import com.realexpayments.xml.bean.annotations.TagAttribute;
 import com.realexpayments.xml.bean.annotations.TagName;
 
@@ -51,12 +54,39 @@ public class RealExBeanToXMLConverterUtil {
 				if(f.get(obj)!=null)
 					ele.add(getElementFromBean(f.get(obj)));
 			}
-			else if(f.get(obj)instanceof List && f.isAnnotationPresent(TagName.class) && f.get(obj)!=null)
+			else if(f.get(obj)instanceof List && f.isAnnotationPresent(TagName.class) && f.get(obj)!=null && ((List)f.get(obj)).get(0).getClass().isAssignableFrom(RealExBean.class))
 			{
 				for(Object ob:(List)f.get(obj))
 				{
 					if(ob!=null)
 						ele.add(getElementFromBean(ob));
+				}
+				
+			}
+			else if(f.get(obj)instanceof List && f.isAnnotationPresent(TagName.class) && f.get(obj)!=null && !((List)f.get(obj)).get(0).getClass().isAssignableFrom(RealExBean.class))
+			{
+				if(getFieldAnnotationValue(f, TagName.class, "isSuffixIncremental")!=null && !getFieldAnnotationValue(f, TagName.class, "isSuffixIncremental").equals("not-incremental")){
+					
+					int count=1;
+					for(Object ob:(List)f.get(obj))
+					{
+						if(ob!=null)
+							ele.add(DocumentHelper.createElement(getFieldAnnotationValue(f, TagName.class, "name")+getFormattedNumber(count)).addText(Strings.nullToEmpty(f.get(ob).toString()).toString()));
+						
+						count++;
+					}
+					
+				}
+				
+				
+			}
+			else if(f.get(obj)instanceof Map)
+			{
+				
+				for(String ob:((Map<String,String>)f.get(obj)).keySet())
+				{
+					if(ob!=null)
+						ele.add(DocumentHelper.createElement(ob).addText(((Map<String,String>)f.get(obj)).get(ob)));
 				}
 				
 			}
@@ -68,7 +98,7 @@ public class RealExBeanToXMLConverterUtil {
 			else if(!f.isAnnotationPresent(TagName.class)&& !f.isAnnotationPresent(TagAttribute.class) && !f.get(obj).getClass().isAssignableFrom(RealExBean.class) && f.get(obj)!=null)
 			{
 				
-				ele.addText(Strings.nullToEmpty((String)f.get(obj)).toString());
+				ele.addText(((ele.getText()!=null)?ele.getText():"")+";"+Strings.nullToEmpty((String)f.get(obj)).toString());
 			}
 		}
 		return ele;
@@ -154,5 +184,9 @@ public class RealExBeanToXMLConverterUtil {
 	}
 	
 	
+	private static String getFormattedNumber(int num)
+	{
+		return (num<10)?"0"+num:""+num;
+	}
 
 }

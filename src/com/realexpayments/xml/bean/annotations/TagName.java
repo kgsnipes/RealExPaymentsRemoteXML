@@ -13,4 +13,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface TagName {
 	public String name(); 
+	public String isSuffixIncremental() default "not-incremental"; 
 }
