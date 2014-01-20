@@ -19,9 +19,9 @@ import com.realexpayments.xml.util.RealExHttpUtil;
 
 public class SampleCode {
 
-		public static final String SHARED_SECRET="secret";
-		public static final String MERCHANT_ID="merchant-123456789";
-		public static final String ORDER_ID="order-123456789";
+	public static final String SHARED_SECRET="secret";
+	public static final String MERCHANT_ID="merchant-123456789";
+	public static final String ORDER_ID="order-123456789";
 		
 	public static void main(String []args) throws Exception
 	{
@@ -29,6 +29,7 @@ public class SampleCode {
 		RealExResponse response=getResponseForRealExSetupNewPayerRequest();
 		System.out.println("Response result :"+ response.getResult() );
 		System.out.println("Response message :"+ response.getMessage() );
+		
 	}
 	
 	
