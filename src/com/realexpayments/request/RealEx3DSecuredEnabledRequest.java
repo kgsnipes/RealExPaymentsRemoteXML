@@ -9,7 +9,7 @@ import com.realexpayments.xml.bean.annotations.TagAttribute;
 import com.realexpayments.xml.bean.annotations.TagName;
 
 @TagName(name="request")
-public class RealEx3DSecuredEnabled extends RealExBean{
+public class RealEx3DSecuredEnabledRequest extends RealExRequest{
 	@TagAttribute(name="type")
 	protected String type="realvault-3ds-verifyenrolled";
 	@TagAttribute(name="timestamp")
@@ -188,7 +188,7 @@ public class RealEx3DSecuredEnabled extends RealExBean{
 		this.comments = comments;
 	}
 
-	public RealEx3DSecuredEnabled(String type, String timestamp,
+	public RealEx3DSecuredEnabledRequest(String type, String timestamp,
 			String merchantId, String account, String orderId,
 			RealExAmount amount, String payerref, String paymentmethod,
 			RealExAutoSettle autosettle, String sha1hash,

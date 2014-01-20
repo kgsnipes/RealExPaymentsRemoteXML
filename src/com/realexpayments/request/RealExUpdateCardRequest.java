@@ -6,7 +6,7 @@ import com.realexpayments.xml.bean.annotations.TagAttribute;
 import com.realexpayments.xml.bean.annotations.TagName;
 
 @TagName(name="request")
-public class RealExUpdateCardRequest extends RealExBean{
+public class RealExUpdateCardRequest extends RealExRequest{
 	@TagAttribute(name="type")
 	protected String type="card-update-card";
 	@TagAttribute(name="timestamp")

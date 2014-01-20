@@ -12,6 +12,22 @@ public class RealExDCCInfo extends RealExBean{
 	protected String rate;
 	@TagName(name="ratetype")
 	protected String ratetype;
+	
+	protected RealExAmount amount;
+	
+	
+	/**
+	 * @return the amount
+	 */
+	public RealExAmount getAmount() {
+		return amount;
+	}
+	/**
+	 * @param amount the amount to set
+	 */
+	public void setAmount(RealExAmount amount) {
+		this.amount = amount;
+	}
 	/**
 	 * @return the ccp
 	 */
@@ -67,6 +83,21 @@ public class RealExDCCInfo extends RealExBean{
 		this.rate = rate;
 		this.ratetype = ratetype;
 	}
+	public RealExDCCInfo(String ccp, String type, String rate, String ratetype,
+			RealExAmount amount) {
+		super();
+		this.ccp = ccp;
+		this.type = type;
+		this.rate = rate;
+		this.ratetype = ratetype;
+		this.amount = amount;
+	}
+	public RealExDCCInfo(String ccp, String type) {
+		super();
+		this.ccp = ccp;
+		this.type = type;
+	}
+	
 	
 	
 

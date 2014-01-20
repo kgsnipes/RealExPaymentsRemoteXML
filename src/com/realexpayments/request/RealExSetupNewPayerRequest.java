@@ -7,7 +7,7 @@ import com.realexpayments.xml.bean.annotations.TagAttribute;
 import com.realexpayments.xml.bean.annotations.TagName;
 
 @TagName(name="request")
-public class RealExSetupNewPayerRequest extends RealExBean{
+public class RealExSetupNewPayerRequest extends RealExRequest{
 	@TagAttribute(name="type")
 	protected String type="payer-new";
 	@TagAttribute(name="timestamp")

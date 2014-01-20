@@ -6,7 +6,7 @@ import com.realexpayments.xml.bean.annotations.TagAttribute;
 import com.realexpayments.xml.bean.annotations.TagName;
 
 @TagName(name="request")
-public class RealExDeleteCardRequest extends RealExBean{
+public class RealExDeleteCardRequest extends RealExRequest{
 	@TagAttribute(name="type")
 	protected String type="card-cancel-card";
 	@TagAttribute(name="timestamp")
