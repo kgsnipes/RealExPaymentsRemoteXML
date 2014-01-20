@@ -1,22 +1,26 @@
-package com.realexpayments.xml.bean;
+package com.realexpayments.request;
 
+import com.realexpayments.xml.bean.RealExBean;
+import com.realexpayments.xml.bean.RealExComments;
+import com.realexpayments.xml.bean.RealExPayer;
 import com.realexpayments.xml.bean.annotations.TagAttribute;
 import com.realexpayments.xml.bean.annotations.TagName;
 
 @TagName(name="request")
-public class RealExPaymentMethodSetupRequest extends RealExBean{
+public class RealExSetupNewPayerRequest extends RealExBean{
 	@TagAttribute(name="type")
-	protected String type;
+	protected String type="payer-new";
 	@TagAttribute(name="timestamp")
 	protected String timestamp;
 	@TagName(name="merchantid")
 	protected String merchantId;
 	@TagName(name="orderid")
 	protected String orderId;
-	
-	protected RealExCard card;
 	@TagName(name="sha1hash")
 	protected String sha1hash;
+	
+	protected RealExPayer payer;
+	protected RealExComments comments;
 	/**
 	 * @return the type
 	 */
@@ -66,18 +70,6 @@ public class RealExPaymentMethodSetupRequest extends RealExBean{
 		this.orderId = orderId;
 	}
 	/**
-	 * @return the card
-	 */
-	public RealExCard getCard() {
-		return card;
-	}
-	/**
-	 * @param card the card to set
-	 */
-	public void setCard(RealExCard card) {
-		this.card = card;
-	}
-	/**
 	 * @return the sha1hash
 	 */
 	public String getSha1hash() {
@@ -89,17 +81,42 @@ public class RealExPaymentMethodSetupRequest extends RealExBean{
 	public void setSha1hash(String sha1hash) {
 		this.sha1hash = sha1hash;
 	}
-	public RealExPaymentMethodSetupRequest(String type, String timestamp,
-			String merchantId, String orderId, RealExCard card, String sha1hash) {
+	/**
+	 * @return the payer
+	 */
+	public RealExPayer getPayer() {
+		return payer;
+	}
+	/**
+	 * @param payer the payer to set
+	 */
+	public void setPayer(RealExPayer payer) {
+		this.payer = payer;
+	}
+	/**
+	 * @return the comments
+	 */
+	public RealExComments getComments() {
+		return comments;
+	}
+	/**
+	 * @param comments the comments to set
+	 */
+	public void setComments(RealExComments comments) {
+		this.comments = comments;
+	}
+	public RealExSetupNewPayerRequest(String type, String timestamp,
+			String merchantId, String orderId, String sha1hash,
+			RealExPayer payer, RealExComments comments) {
 		super();
 		this.type = type;
 		this.timestamp = timestamp;
 		this.merchantId = merchantId;
 		this.orderId = orderId;
-		this.card = card;
 		this.sha1hash = sha1hash;
+		this.payer = payer;
+		this.comments = comments;
 	}
-	
 	
 	
 	

@@ -16,8 +16,8 @@ import com.google.common.base.Strings;
 import com.google.common.hash.HashCode;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
+import com.realexpayments.response.RealExResponse;
 import com.realexpayments.xml.bean.RealExBean;
-import com.realexpayments.xml.bean.RealExResponse;
 import com.realexpayments.xml.bean.annotations.TagAttribute;
 import com.realexpayments.xml.bean.annotations.TagName;
 
@@ -41,7 +41,7 @@ public class RealExBeanToXMLConverterUtil {
 			f.setAccessible(true);
 			
 			
-			if(f.isAnnotationPresent(TagAttribute.class))
+			if(f.isAnnotationPresent(TagAttribute.class) && f.get(obj)!=null)
 			{
 			
 				ele.addAttribute(getFieldAnnotationValue(f, TagAttribute.class, "name"), Strings.nullToEmpty((String)f.get(obj)).toString());
@@ -51,7 +51,7 @@ public class RealExBeanToXMLConverterUtil {
 				if(f.get(obj)!=null)
 					ele.add(getElementFromBean(f.get(obj)));
 			}
-			else if(f.get(obj)instanceof List && f.isAnnotationPresent(TagName.class))
+			else if(f.get(obj)instanceof List && f.isAnnotationPresent(TagName.class) && f.get(obj)!=null)
 			{
 				for(Object ob:(List)f.get(obj))
 				{
@@ -60,12 +60,12 @@ public class RealExBeanToXMLConverterUtil {
 				}
 				
 			}
-			else if(f.isAnnotationPresent(TagName.class) && !f.get(obj).getClass().isAssignableFrom(RealExBean.class))
+			else if(f.isAnnotationPresent(TagName.class) && !f.get(obj).getClass().isAssignableFrom(RealExBean.class) && f.get(obj)!=null)
 			{
 				
 				ele.add(DocumentHelper.createElement(getFieldAnnotationValue(f, TagName.class, "name")).addText(Strings.nullToEmpty((String)f.get(obj)).toString()));
 			}
-			else if(!f.isAnnotationPresent(TagName.class)&& !f.isAnnotationPresent(TagAttribute.class) && !f.get(obj).getClass().isAssignableFrom(RealExBean.class))
+			else if(!f.isAnnotationPresent(TagName.class)&& !f.isAnnotationPresent(TagAttribute.class) && !f.get(obj).getClass().isAssignableFrom(RealExBean.class) && f.get(obj)!=null)
 			{
 				
 				ele.addText(Strings.nullToEmpty((String)f.get(obj)).toString());

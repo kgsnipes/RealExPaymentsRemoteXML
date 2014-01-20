@@ -1,4 +1,6 @@
-package com.realexpayments.xml.bean;
+package com.realexpayments.response;
+
+import com.realexpayments.xml.bean.RealExBean;
 
 
 public class RealExResponse extends RealExBean{
