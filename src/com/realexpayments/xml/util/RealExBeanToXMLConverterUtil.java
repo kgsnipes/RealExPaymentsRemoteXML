@@ -90,7 +90,7 @@ public class RealExBeanToXMLConverterUtil {
 				}
 				
 			}
-			else if(f.isAnnotationPresent(TagName.class) && !f.get(obj).getClass().isAssignableFrom(RealExBean.class) && f.get(obj)!=null)
+			else if(f.isAnnotationPresent(TagName.class) && f.get(obj)!=null && !f.get(obj).getClass().isAssignableFrom(RealExBean.class) )
 			{
 				
 				ele.add(DocumentHelper.createElement(getFieldAnnotationValue(f, TagName.class, "name")).addText(Strings.nullToEmpty((String)f.get(obj)).toString()));
@@ -98,7 +98,7 @@ public class RealExBeanToXMLConverterUtil {
 			else if(!f.isAnnotationPresent(TagName.class)&& !f.isAnnotationPresent(TagAttribute.class) && !f.get(obj).getClass().isAssignableFrom(RealExBean.class) && f.get(obj)!=null)
 			{
 				
-				ele.addText(((ele.getText()!=null)?ele.getText():"")+";"+Strings.nullToEmpty((String)f.get(obj)).toString());
+				ele.addText(((!Strings.nullToEmpty(ele.getText()).equals(""))?ele.getText()+";":"")+Strings.nullToEmpty((String)f.get(obj)).toString());
 			}
 		}
 		return ele;

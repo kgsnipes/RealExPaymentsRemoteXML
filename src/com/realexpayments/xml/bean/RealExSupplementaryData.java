@@ -7,6 +7,7 @@ import com.realexpayments.xml.bean.annotations.TagName;
 @TagName(name="supplementarydata")
 public class RealExSupplementaryData extends RealExBean{
 	
+	@TagName(name="item")
 	protected List<RealExSupplementaryDataItem> item;
 
 	/**

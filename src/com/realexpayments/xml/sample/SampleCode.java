@@ -12,6 +12,7 @@ import com.realexpayments.request.RealExDCCSecuredEnabledRequest;
 import com.realexpayments.request.RealExDeleteCardRequest;
 import com.realexpayments.request.RealExEditExistingPayerRequest;
 import com.realexpayments.request.RealExRaisingCreditCardPaymentRequest;
+import com.realexpayments.request.RealExRaisingRefundRequest;
 import com.realexpayments.request.RealExSetupNewPayerRequest;
 import com.realexpayments.response.RealExResponse;
 import com.realexpayments.xml.bean.RealExAmount;
@@ -49,12 +50,76 @@ public class SampleCode {
 		System.out.println("Response result :"+ response.getResult() );
 		System.out.println("Response message :"+ response.getMessage() );
 		
+		
+		response=getResponseForRealEx3DSecuredEnabledRequest();
+		System.out.println("Response result :"+ response.getResult() );
+		System.out.println("Response message :"+ response.getMessage() );
+		
+		response=getResponseForRealExAddCardRequest();
+		System.out.println("Response result :"+ response.getResult() );
+		System.out.println("Response message :"+ response.getMessage() );
+		
+		response=getResponseForRealExDCCSecuredEnabledRequest();
+		System.out.println("Response result :"+ response.getResult() );
+		System.out.println("Response message :"+ response.getMessage() );
+		
+		response=getResponseForRealExDeleteCardRequest();
+		System.out.println("Response result :"+ response.getResult() );
+		System.out.println("Response message :"+ response.getMessage() );
+		
+		response=getResponseForRealExEditExistingPayerRequest();
+		System.out.println("Response result :"+ response.getResult() );
+		System.out.println("Response message :"+ response.getMessage() );
+		
+		 response=getResponseForRealExRaisingCreditCardPaymentRequest();
+		System.out.println("Response result :"+ response.getResult() );
+		System.out.println("Response message :"+ response.getMessage() );
+		
+		response=getResponseForRealExRaisingRefundRequest();
+		System.out.println("Response result :"+ response.getResult() );
+		System.out.println("Response message :"+ response.getMessage() );
+		
 	}
 	
 	
 	public static RealExResponse getResponseForRealExSetupNewPayerRequest()throws Exception
 	{
 		return RealExHttpUtil.getResponse(Constants.REAL_EX_PAYMENTS_URL, getRealExSetupNewPayerRequest());
+	}
+	
+	public static RealExResponse getResponseForRealEx3DSecuredEnabledRequest()throws Exception
+	{
+		return RealExHttpUtil.getResponse(Constants.REAL_EX_PAYMENTS_URL, getRealEx3DSecuredEnabledRequest());
+	}
+	
+	public static RealExResponse getResponseForRealExAddCardRequest()throws Exception
+	{
+		return RealExHttpUtil.getResponse(Constants.REAL_EX_PAYMENTS_URL, getRealExAddCardRequest());
+	}
+	
+	public static RealExResponse getResponseForRealExDCCSecuredEnabledRequest()throws Exception
+	{
+		return RealExHttpUtil.getResponse(Constants.REAL_EX_PAYMENTS_URL, getRealExDCCSecuredEnabledRequest());
+	}
+	
+	public static RealExResponse getResponseForRealExDeleteCardRequest()throws Exception
+	{
+		return RealExHttpUtil.getResponse(Constants.REAL_EX_PAYMENTS_URL, getRealExDeleteCardRequest());
+	}
+	
+	public static RealExResponse getResponseForRealExEditExistingPayerRequest()throws Exception
+	{
+		return RealExHttpUtil.getResponse(Constants.REAL_EX_PAYMENTS_URL, getRealExEditExistingPayerRequest());
+	}
+	
+	public static RealExResponse getResponseForRealExRaisingCreditCardPaymentRequest()throws Exception
+	{
+		return RealExHttpUtil.getResponse(Constants.REAL_EX_PAYMENTS_URL, getRealExRaisingCreditCardPaymentRequest());
+	}
+	
+	public static RealExResponse getResponseForRealExRaisingRefundRequest()throws Exception
+	{
+		return RealExHttpUtil.getResponse(Constants.REAL_EX_PAYMENTS_URL, getRealExRaisingRefundRequest());
 	}
 	
 	public static RealExSetupNewPayerRequest getRealExSetupNewPayerRequest() throws Exception
@@ -173,6 +238,30 @@ public class SampleCode {
 		items.add(new RealExSupplementaryDataItem("pnr", kv));
 		items.add(new RealExSupplementaryDataItem("por", kv1));
 		retVal=new RealExRaisingCreditCardPaymentRequest(timeStamp, MERCHANT_ID, ACCOUNT_ID, ORDER_ID, new RealExPaymentData("001", "1324123413241324"), new RealExMPI("65f4g6d5f4g", "654dgs65d4g", "654f64gh5fh"), new RealExDCCInfo("fexco", "1", "1.30", "S", new RealExAmount("USD", "9999")), new RealExAmount("USD", "9999"), "smithj01", "visa01", new RealExAutoSettle("1"), HashingUtil.getSHAHashForRaisingCreditCardPayment(SHARED_SECRET, timeStamp, MERCHANT_ID, ORDER_ID, "9999", "USD", "smithj01"), comments, new RealExTSSInfo(new RealExTSSAddress("billing", "US", "United States"), new RealExTSSAddress("shipping", "US", "United States")), new RealExSupplementaryData(items));
+		String xml=RealExBeanToXMLConverterUtil.toXML(retVal);
+		System.out.println(xml);
+		return retVal;	
+	}
+	
+	public static RealExRaisingRefundRequest getRealExRaisingRefundRequest() throws Exception
+	{
+		RealExRaisingRefundRequest retVal=null;
+		Date now=new Date();
+		String timeStamp=now.getTime()+"";
+		List<RealExComment> comment=new ArrayList<>();
+		comment.add(new RealExComment("id1", "comment1"));
+		comment.add(new RealExComment("id2", "comment2"));
+		RealExComments comments=new RealExComments(comment);
+		Map<String,String> kv=new HashMap<>();
+		kv.put("key1", "value1");
+		kv.put("key2", "value2");
+		Map<String,String> kv1=new HashMap<>();
+		kv.put("1key1", "1value1");
+		kv.put("2key2", "2value2");
+		List<RealExSupplementaryDataItem> items=new ArrayList<>(); 
+		items.add(new RealExSupplementaryDataItem("pnr", kv));
+		items.add(new RealExSupplementaryDataItem("por", kv1));
+		retVal=new RealExRaisingRefundRequest(timeStamp, MERCHANT_ID, ACCOUNT_ID, ORDER_ID, new RealExPaymentData("114", "1234123412341234"), new RealExMPI("re654g", "65fdg64dg", "fd1g3d5g"), new RealExDCCInfo("fexco", "1", "1.30", "S", new RealExAmount("USD", "9999")), new RealExAmount("USD", "9999"), "smithj01", "visa01", new RealExAutoSettle("1"), HashingUtil.getSHAHashForRefund(SHARED_SECRET, timeStamp, MERCHANT_ID, ORDER_ID, "9999", "USD", "smithj01"), HashingUtil.getSHAHashForRefund(SHARED_SECRET, timeStamp, MERCHANT_ID, ORDER_ID, "9999", "USD", "smithj01"), comments, new RealExTSSInfo(new RealExTSSAddress("billing", "US", "United States"), new RealExTSSAddress("shipping", "US", "United States")), new RealExSupplementaryData(items));
 		String xml=RealExBeanToXMLConverterUtil.toXML(retVal);
 		System.out.println(xml);
 		return retVal;	
