@@ -9,4 +9,26 @@ public class RealExSupplementaryData extends RealExBean{
 	
 	protected List<RealExSupplementaryDataItem> item;
 
+	/**
+	 * @return the item
+	 */
+	public List<RealExSupplementaryDataItem> getItem() {
+		return item;
+	}
+
+	/**
+	 * @param item the item to set
+	 */
+	public void setItem(List<RealExSupplementaryDataItem> item) {
+		this.item = item;
+	}
+
+	public RealExSupplementaryData(List<RealExSupplementaryDataItem> item) {
+		super();
+		this.item = item;
+	}
+	
+	
+	
+
 }
