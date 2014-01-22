@@ -33,29 +33,16 @@ public class RealExBeanToXMLConverterUtil {
 	
 	public static String toXML(RealExBean bean) throws Exception
 	{
-		return toXML_V_2(bean);
-		/*String retVal=null;
+		//return toXML_V_2(bean);
+		String retVal=null;
 		Document document = DocumentHelper.createDocument();
 		//Element root = document.addElement( getClassAnnotationValue(bean.getClass(), TagName.class, "name") );
 		document.add(getElementFromBean(bean));
 		retVal=document.asXML();
-		return retVal;*/
-	}
-	
-	private static String toXML_V_2(RealExBean bean) throws Exception
-	{
-		String retVal=null;
-		StringWriter writer=new StringWriter();
-		JAXBContext jaxbContext = JAXBContext.newInstance(bean.getClass());
-		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-		// output pretty printed
-		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-		jaxbMarshaller.marshal(bean, writer);
-		retVal=writer.toString();
-	 
-		     
 		return retVal;
 	}
+	
+	
 	
 	private static Element getElementFromBean(Object obj) throws Exception
 	{
