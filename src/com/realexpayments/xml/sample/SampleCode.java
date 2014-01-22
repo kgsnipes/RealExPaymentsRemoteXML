@@ -6,31 +6,31 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.realexpayments.request.RealEx3DSecuredEnabledRequest;
-import com.realexpayments.request.RealExAddCardRequest;
-import com.realexpayments.request.RealExDCCSecuredEnabledRequest;
-import com.realexpayments.request.RealExDeleteCardRequest;
-import com.realexpayments.request.RealExEditExistingPayerRequest;
-import com.realexpayments.request.RealExRaisingCreditCardPaymentRequest;
-import com.realexpayments.request.RealExRaisingRefundRequest;
-import com.realexpayments.request.RealExSetupNewPayerRequest;
+import com.realexpayments.request.jaxb.RealEx3DSecuredEnabledRequest;
+import com.realexpayments.request.jaxb.RealExAddCardRequest;
+import com.realexpayments.request.jaxb.RealExDCCSecuredEnabledRequest;
+import com.realexpayments.request.jaxb.RealExDeleteCardRequest;
+import com.realexpayments.request.jaxb.RealExEditExistingPayerRequest;
+import com.realexpayments.request.jaxb.RealExRaisingCreditCardPaymentRequest;
+import com.realexpayments.request.jaxb.RealExRaisingRefundRequest;
+import com.realexpayments.request.jaxb.RealExSetupNewPayerRequest;
 import com.realexpayments.response.RealExResponse;
-import com.realexpayments.xml.bean.RealExAmount;
-import com.realexpayments.xml.bean.RealExAutoSettle;
-import com.realexpayments.xml.bean.RealExCard;
-import com.realexpayments.xml.bean.RealExComment;
-import com.realexpayments.xml.bean.RealExComments;
-import com.realexpayments.xml.bean.RealExCountryCode;
-import com.realexpayments.xml.bean.RealExDCCInfo;
-import com.realexpayments.xml.bean.RealExMPI;
-import com.realexpayments.xml.bean.RealExPayer;
-import com.realexpayments.xml.bean.RealExPayerAddress;
-import com.realexpayments.xml.bean.RealExPayerPhoneNumbers;
-import com.realexpayments.xml.bean.RealExPaymentData;
-import com.realexpayments.xml.bean.RealExSupplementaryData;
-import com.realexpayments.xml.bean.RealExSupplementaryDataItem;
-import com.realexpayments.xml.bean.RealExTSSAddress;
-import com.realexpayments.xml.bean.RealExTSSInfo;
+import com.realexpayments.xml.bean.jaxb.RealExAmount;
+import com.realexpayments.xml.bean.jaxb.RealExAutoSettle;
+import com.realexpayments.xml.bean.jaxb.RealExCard;
+import com.realexpayments.xml.bean.jaxb.RealExComment;
+import com.realexpayments.xml.bean.jaxb.RealExComments;
+import com.realexpayments.xml.bean.jaxb.RealExCountryCode;
+import com.realexpayments.xml.bean.jaxb.RealExDCCInfo;
+import com.realexpayments.xml.bean.jaxb.RealExMPI;
+import com.realexpayments.xml.bean.jaxb.RealExPayer;
+import com.realexpayments.xml.bean.jaxb.RealExPayerAddress;
+import com.realexpayments.xml.bean.jaxb.RealExPayerPhoneNumbers;
+import com.realexpayments.xml.bean.jaxb.RealExPaymentData;
+import com.realexpayments.xml.bean.jaxb.RealExSupplementaryData;
+import com.realexpayments.xml.bean.jaxb.RealExSupplementaryDataItem;
+import com.realexpayments.xml.bean.jaxb.RealExTSSAddress;
+import com.realexpayments.xml.bean.jaxb.RealExTSSInfo;
 import com.realexpayments.xml.util.Constants;
 import com.realexpayments.xml.util.HashingUtil;
 import com.realexpayments.xml.util.RealExBeanToXMLConverterUtil;
@@ -50,7 +50,7 @@ public class SampleCode {
 		System.out.println("Response result :"+ response.getResult() );
 		System.out.println("Response message :"+ response.getMessage() );
 		
-		
+		/*
 		response=getResponseForRealEx3DSecuredEnabledRequest();
 		System.out.println("Response result :"+ response.getResult() );
 		System.out.println("Response message :"+ response.getMessage() );
@@ -77,7 +77,7 @@ public class SampleCode {
 		
 		response=getResponseForRealExRaisingRefundRequest();
 		System.out.println("Response result :"+ response.getResult() );
-		System.out.println("Response message :"+ response.getMessage() );
+		System.out.println("Response message :"+ response.getMessage() );*/
 		
 	}
 	
@@ -87,7 +87,7 @@ public class SampleCode {
 		return RealExHttpUtil.getResponse(Constants.REAL_EX_PAYMENTS_URL, getRealExSetupNewPayerRequest());
 	}
 	
-	public static RealExResponse getResponseForRealEx3DSecuredEnabledRequest()throws Exception
+	/*public static RealExResponse getResponseForRealEx3DSecuredEnabledRequest()throws Exception
 	{
 		return RealExHttpUtil.getResponse(Constants.REAL_EX_PAYMENTS_URL, getRealEx3DSecuredEnabledRequest());
 	}
@@ -120,7 +120,7 @@ public class SampleCode {
 	public static RealExResponse getResponseForRealExRaisingRefundRequest()throws Exception
 	{
 		return RealExHttpUtil.getResponse(Constants.REAL_EX_PAYMENTS_URL, getRealExRaisingRefundRequest());
-	}
+	}*/
 	
 	public static RealExSetupNewPayerRequest getRealExSetupNewPayerRequest() throws Exception
 	{
@@ -141,7 +141,7 @@ public class SampleCode {
 		return retVal;	
 	}
 	
-	public static RealEx3DSecuredEnabledRequest getRealEx3DSecuredEnabledRequest() throws Exception
+	/*public static RealEx3DSecuredEnabledRequest getRealEx3DSecuredEnabledRequest() throws Exception
 	{
 		RealEx3DSecuredEnabledRequest retVal=null;
 		Date now=new Date();
@@ -266,6 +266,6 @@ public class SampleCode {
 		System.out.println(xml);
 		return retVal;	
 	}
-	
+	*/
 	
 }

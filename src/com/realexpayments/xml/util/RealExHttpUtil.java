@@ -3,7 +3,7 @@ package com.realexpayments.xml.util;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.entity.ContentType;
 
-import com.realexpayments.request.RealExRequest;
+import com.realexpayments.request.jaxb.RealExRequest;
 import com.realexpayments.response.RealExResponse;
 
 public class RealExHttpUtil {
