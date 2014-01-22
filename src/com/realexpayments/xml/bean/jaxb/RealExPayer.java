@@ -165,6 +165,10 @@ public class RealExPayer extends RealExBean{
 	public void setComments(RealExComments comments) {
 		this.comments = comments;
 	}
+	public RealExPayer() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 	

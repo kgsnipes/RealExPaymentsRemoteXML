@@ -28,6 +28,11 @@ public class RealExComments extends RealExBean{
 		super();
 		this.comments = comments;
 	}
+
+	public RealExComments() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 

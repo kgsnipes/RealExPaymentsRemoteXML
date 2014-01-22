@@ -73,6 +73,11 @@ public class RealExSupplementaryDataItem  extends RealExBean{
 		this.type = type;
 		this.fieldMap = fieldMap;
 	}
+
+	public RealExSupplementaryDataItem() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 	

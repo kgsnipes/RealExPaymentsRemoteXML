@@ -97,6 +97,11 @@ public class RealExTSSInfo extends RealExBean{
 		this.billing = billing;
 		this.shipping = shipping;
 	}
+
+	public RealExTSSInfo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 	

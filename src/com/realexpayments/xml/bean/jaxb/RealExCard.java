@@ -114,6 +114,10 @@ public class RealExCard extends RealExBean{
 		this.type = type;
 		this.issueNo = issueNo;
 	}
+	public RealExCard() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 	

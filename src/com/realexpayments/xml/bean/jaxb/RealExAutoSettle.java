@@ -29,6 +29,11 @@ public class RealExAutoSettle extends RealExBean{
 		super();
 		this.flag = flag;
 	}
+
+	public RealExAutoSettle() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 

@@ -29,6 +29,11 @@ public class RealExSupplementaryData extends RealExBean{
 		super();
 		this.item = item;
 	}
+
+	public RealExSupplementaryData() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 	

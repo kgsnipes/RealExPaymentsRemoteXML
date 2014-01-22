@@ -99,6 +99,10 @@ public class RealExDCCInfo extends RealExBean{
 		this.ccp = ccp;
 		this.type = type;
 	}
+	public RealExDCCInfo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 	

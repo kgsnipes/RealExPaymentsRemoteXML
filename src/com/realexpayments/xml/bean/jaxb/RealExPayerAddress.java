@@ -114,6 +114,10 @@ public class RealExPayerAddress extends RealExBean{
 		this.postcode = postcode;
 		this.countryCode = countryCode;
 	}
+	public RealExPayerAddress() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 

@@ -44,6 +44,10 @@ public class RealExCountryCode extends RealExBean{
 	public void setCountryName(String countryName) {
 		this.countryName = countryName;
 	}
+	public RealExCountryCode() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 	

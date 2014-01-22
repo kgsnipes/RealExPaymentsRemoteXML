@@ -69,6 +69,10 @@ public class RealExPayerPhoneNumbers extends RealExBean{
 		this.fax = fax;
 		this.mobile = mobile;
 	}
+	public RealExPayerPhoneNumbers() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 	

@@ -53,6 +53,10 @@ public class RealExMPI extends RealExBean{
 		this.xid = xid;
 		this.eci = eci;
 	}
+	public RealExMPI() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	
 	

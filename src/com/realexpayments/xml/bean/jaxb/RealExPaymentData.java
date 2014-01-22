@@ -38,6 +38,10 @@ public class RealExPaymentData extends RealExBean{
 		this.cvn = cvn;
 		this.number = number;
 	}
+	public RealExPaymentData() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 	

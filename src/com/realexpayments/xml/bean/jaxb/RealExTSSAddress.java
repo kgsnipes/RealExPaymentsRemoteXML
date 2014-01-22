@@ -63,6 +63,11 @@ public class RealExTSSAddress extends RealExBean{
 		this.code = code;
 		this.country = country;
 	}
+
+	public RealExTSSAddress() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 

@@ -44,6 +44,11 @@ public class RealExRecurring extends RealExBean{
 		this.type = type;
 		this.sequence = sequence;
 	}
+
+	public RealExRecurring() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 

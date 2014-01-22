@@ -38,6 +38,13 @@ public class RealExAmount extends RealExBean{
 	public void setAmount(String amount) {
 		this.amount = amount;
 	}
+	
+	
+
+	public RealExAmount() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public RealExAmount(String currency, String amount) {
 		super();
