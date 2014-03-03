@@ -2,8 +2,6 @@ package com.realexpayments.request;
 
 import com.realexpayments.xml.bean.RealExAmount;
 import com.realexpayments.xml.bean.RealExAutoSettle;
-import com.realexpayments.xml.bean.RealExBean;
-import com.realexpayments.xml.bean.RealExCard;
 import com.realexpayments.xml.bean.RealExComments;
 import com.realexpayments.xml.bean.RealExDCCInfo;
 import com.realexpayments.xml.bean.RealExMPI;
@@ -12,6 +10,7 @@ import com.realexpayments.xml.bean.RealExSupplementaryData;
 import com.realexpayments.xml.bean.RealExTSSInfo;
 import com.realexpayments.xml.bean.annotations.TagAttribute;
 import com.realexpayments.xml.bean.annotations.TagName;
+import com.realexpayments.xml.bean.annotations.TagValue;
 
 @TagName(name="request")
 public class RealExRaisingCreditCardPaymentRequest extends RealExRequest{
@@ -25,25 +24,29 @@ public class RealExRaisingCreditCardPaymentRequest extends RealExRequest{
 	protected String account;
 	@TagName(name="orderid")
 	protected String orderId;
-	
+	@TagValue
 	protected RealExPaymentData paymentData;
+	@TagValue
 	protected RealExMPI mpi;
+	@TagValue
 	protected RealExDCCInfo dccInfo;
+	@TagValue
 	protected RealExAmount amount;
 	@TagName(name="payerref")
 	protected String payerRef;
 	@TagName(name="paymentmethod")
 	protected String paymentmethod;
+	@TagValue
 	protected RealExAutoSettle autoSettle;
 	
 	
 	@TagName(name="sha1hash")
 	protected String sha1hash;
-	
+	@TagValue
 	protected RealExComments comments;
-	
+	@TagValue
 	protected RealExTSSInfo tssinfo;
-	
+	@TagValue
 	protected RealExSupplementaryData supplementaryData;
 
 	/**

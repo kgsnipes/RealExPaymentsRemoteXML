@@ -1,33 +1,21 @@
 package com.realexpayments.xml.util;
 
-import java.io.StringWriter;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-
 import org.dom4j.Document;
-import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.Node;
-import org.dom4j.io.SAXReader;
 
-import com.google.common.base.Charsets;
 import com.google.common.base.Strings;
-import com.google.common.hash.HashCode;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
 import com.realexpayments.response.RealExResponse;
 import com.realexpayments.xml.bean.RealExBean;
-import com.realexpayments.xml.bean.RealExSupplementaryDataItem;
 import com.realexpayments.xml.bean.annotations.TagAttribute;
 import com.realexpayments.xml.bean.annotations.TagName;
+import com.realexpayments.xml.bean.annotations.TagValue;
 
 public class RealExBeanToXMLConverterUtil {
 	
@@ -57,8 +45,9 @@ public class RealExBeanToXMLConverterUtil {
 			
 				ele.addAttribute(getFieldAnnotationValue(f, TagAttribute.class, "name"), Strings.nullToEmpty((String)f.get(obj)).toString());
 			}
-			else if(f.get(obj)instanceof RealExBean)
+			else if(f.get(obj)instanceof RealExBean && f.isAnnotationPresent(TagValue.class) )
 			{
+				
 				if(f.get(obj)!=null)
 					ele.add(getElementFromBean(f.get(obj)));
 			}
@@ -88,7 +77,7 @@ public class RealExBeanToXMLConverterUtil {
 				
 				
 			}
-			else if(f.get(obj)instanceof Map)
+			else if(f.get(obj)instanceof Map && f.isAnnotationPresent(TagValue.class) )
 			{
 				
 				for(String ob:((Map<String,String>)f.get(obj)).keySet())
@@ -103,9 +92,8 @@ public class RealExBeanToXMLConverterUtil {
 				
 				ele.add(DocumentHelper.createElement(getFieldAnnotationValue(f, TagName.class, "name")).addText(Strings.nullToEmpty((String)f.get(obj)).toString()));
 			}
-			else if(!f.isAnnotationPresent(TagName.class)&& !f.isAnnotationPresent(TagAttribute.class) && !f.get(obj).getClass().isAssignableFrom(RealExBean.class) && f.get(obj)!=null)
+			else if(!f.isAnnotationPresent(TagName.class)&& !f.isAnnotationPresent(TagAttribute.class) && !f.isAnnotationPresent(TagValue.class) && !f.get(obj).getClass().isAssignableFrom(RealExBean.class) && f.get(obj)!=null)
 			{
-				
 				ele.addText(((!Strings.nullToEmpty(ele.getText()).equals(""))?ele.getText()+";":"")+Strings.nullToEmpty((String)f.get(obj)).toString());
 			}
 		}

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.realexpayments.xml.bean.annotations.TagAttribute;
 import com.realexpayments.xml.bean.annotations.TagName;
+import com.realexpayments.xml.bean.annotations.TagValue;
 
 @TagName(name="item")
 public class RealExSupplementaryDataItem  extends RealExBean{
@@ -14,6 +15,7 @@ public class RealExSupplementaryDataItem  extends RealExBean{
 	@TagName(name="field",isSuffixIncremental="incremental")
 	protected List<String> fields;
 
+	@TagValue
 	protected Map<String,String> fieldMap;
 
 	

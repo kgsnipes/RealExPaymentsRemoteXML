@@ -1,9 +1,9 @@
 package com.realexpayments.request;
 
-import com.realexpayments.xml.bean.RealExBean;
 import com.realexpayments.xml.bean.RealExCard;
 import com.realexpayments.xml.bean.annotations.TagAttribute;
 import com.realexpayments.xml.bean.annotations.TagName;
+import com.realexpayments.xml.bean.annotations.TagValue;
 
 @TagName(name="request")
 public class RealExAddCardRequest extends RealExRequest{
@@ -15,7 +15,7 @@ public class RealExAddCardRequest extends RealExRequest{
 	protected String merchantId;
 	@TagName(name="orderid")
 	protected String orderId;
-	
+	@TagValue
 	protected RealExCard card;
 	@TagName(name="sha1hash")
 	protected String sha1hash;

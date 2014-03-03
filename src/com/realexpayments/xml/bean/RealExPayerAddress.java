@@ -1,6 +1,7 @@
 package com.realexpayments.xml.bean;
 
 import com.realexpayments.xml.bean.annotations.TagName;
+import com.realexpayments.xml.bean.annotations.TagValue;
 @TagName(name="address")
 public class RealExPayerAddress extends RealExBean{
 	@TagName(name="line1")
@@ -15,6 +16,7 @@ public class RealExPayerAddress extends RealExBean{
 	protected String county;
 	@TagName(name="postcode")
 	protected String postcode;
+	@TagValue
 	protected RealExCountryCode countryCode;
 	/**
 	 * @return the line1

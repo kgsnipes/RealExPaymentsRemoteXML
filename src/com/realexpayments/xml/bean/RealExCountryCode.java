@@ -2,11 +2,13 @@ package com.realexpayments.xml.bean;
 
 import com.realexpayments.xml.bean.annotations.TagAttribute;
 import com.realexpayments.xml.bean.annotations.TagName;
+import com.realexpayments.xml.bean.annotations.TagValue;
 
 @TagName(name="country")
 public class RealExCountryCode extends RealExBean{
 	@TagAttribute(name="code")
 	protected String countryCode;
+	@TagValue
 	protected String countryName;
 	
 	

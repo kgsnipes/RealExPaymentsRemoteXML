@@ -1,6 +1,7 @@
 package com.realexpayments.xml.bean;
 
 import com.realexpayments.xml.bean.annotations.TagName;
+import com.realexpayments.xml.bean.annotations.TagValue;
 
 @TagName(name="dccinfo")
 public class RealExDCCInfo extends RealExBean{
@@ -12,7 +13,7 @@ public class RealExDCCInfo extends RealExBean{
 	protected String rate;
 	@TagName(name="ratetype")
 	protected String ratetype;
-	
+	@TagValue
 	protected RealExAmount amount;
 	
 	

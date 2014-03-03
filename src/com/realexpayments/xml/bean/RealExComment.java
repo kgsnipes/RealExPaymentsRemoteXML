@@ -1,14 +1,14 @@
 package com.realexpayments.xml.bean;
 
-import java.io.Serializable;
-
 import com.realexpayments.xml.bean.annotations.TagAttribute;
 import com.realexpayments.xml.bean.annotations.TagName;
+import com.realexpayments.xml.bean.annotations.TagValue;
 
 @TagName(name="comment")
 public class RealExComment extends RealExBean{
 	@TagAttribute(name="id")
 	protected String id;
+	@TagValue
 	protected String comment;
 	
 	

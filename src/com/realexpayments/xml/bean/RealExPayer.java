@@ -1,9 +1,8 @@
 package com.realexpayments.xml.bean;
 
-import java.io.Serializable;
-
 import com.realexpayments.xml.bean.annotations.TagAttribute;
 import com.realexpayments.xml.bean.annotations.TagName;
+import com.realexpayments.xml.bean.annotations.TagValue;
 
 @TagName(name="payer")
 public class RealExPayer extends RealExBean{
@@ -19,10 +18,13 @@ public class RealExPayer extends RealExBean{
 	protected String surName;
 	@TagName(name="company")
 	protected String company;
+	@TagValue
 	protected RealExPayerAddress address;
+	@TagValue
 	protected RealExPayerPhoneNumbers phoneNumbers;
 	@TagName(name="email")
 	protected String email;
+	@TagValue
 	protected RealExComments comments;
 	
 	

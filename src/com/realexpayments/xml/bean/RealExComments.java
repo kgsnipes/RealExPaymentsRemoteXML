@@ -1,6 +1,5 @@
 package com.realexpayments.xml.bean;
 
-import java.io.Serializable;
 import java.util.List;
 
 import com.realexpayments.xml.bean.annotations.TagName;

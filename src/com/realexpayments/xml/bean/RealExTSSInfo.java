@@ -1,13 +1,13 @@
 package com.realexpayments.xml.bean;
 
-import com.realexpayments.xml.bean.annotations.TagAttribute;
 import com.realexpayments.xml.bean.annotations.TagName;
+import com.realexpayments.xml.bean.annotations.TagValue;
 
 @TagName(name="tssinfo")
 public class RealExTSSInfo extends RealExBean{
-	
+	@TagValue
 	protected RealExTSSAddress billing;
-	
+	@TagValue
 	protected RealExTSSAddress shipping;
 	
 	@TagName(name="custnum")

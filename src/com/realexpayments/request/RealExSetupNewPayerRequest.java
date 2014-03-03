@@ -1,10 +1,10 @@
 package com.realexpayments.request;
 
-import com.realexpayments.xml.bean.RealExBean;
 import com.realexpayments.xml.bean.RealExComments;
 import com.realexpayments.xml.bean.RealExPayer;
 import com.realexpayments.xml.bean.annotations.TagAttribute;
 import com.realexpayments.xml.bean.annotations.TagName;
+import com.realexpayments.xml.bean.annotations.TagValue;
 
 @TagName(name="request")
 public class RealExSetupNewPayerRequest extends RealExRequest{
@@ -18,8 +18,9 @@ public class RealExSetupNewPayerRequest extends RealExRequest{
 	protected String orderId;
 	@TagName(name="sha1hash")
 	protected String sha1hash;
-	
+	@TagValue
 	protected RealExPayer payer;
+	@TagValue
 	protected RealExComments comments;
 	/**
 	 * @return the type
